@@ -8,3 +8,5 @@ Takovou, co se hezky vejde na display, nesežere FUP a funguje i na bídné wifi
  dat s maximálním užitkem.
 
  Detailní popis aplikace je možné přečíst na [kempy.tomas-dvorak.cz/help.php](http://kempy.tomas-dvorak.cz/help.php).
+
+ Mapa obsahuje geolokační funce založené na databázi  <a href="http://www.maxmind.com">http://www.maxmind.com</a>.
