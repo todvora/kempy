@@ -9,17 +9,15 @@ if (typeof(Number.prototype.toRad) === "undefined") {
 }
 
 var initialLocation;
-var browserSupportFlag =  new Boolean();
 var markersArray = [];
-var activeInfowindow = null;
 
 function HomeControl(controlDiv, map) {
     var controlUI = document.createElement('DIV');
-    $(controlUI).addClass("control-border")
+    $(controlUI).addClass("control-border");
     controlDiv.appendChild(controlUI);
 
     var controlText = document.createElement('DIV');
-    $(controlText).addClass("control-text")
+    $(controlText).addClass("control-text");
     controlText.innerHTML = 'Najít';
     controlUI.appendChild(controlText);
 
@@ -43,16 +41,16 @@ function doSearch(map) {
             alert("Nenalezena žádná lokace!");
         }
     });
-};
+}
 
 function HelpControl(controlDiv, map) {
     var controlUI = document.createElement('DIV');
-    $(controlUI).addClass("control-border")
+    $(controlUI).addClass("control-border");
     controlDiv.appendChild(controlUI);
     
 
     var controlText = document.createElement('DIV');
-    $(controlText).addClass("control-text")
+    $(controlText).addClass("control-text");
     controlText.innerHTML = '?';
     controlUI.appendChild(controlText);
 
@@ -63,11 +61,11 @@ function HelpControl(controlDiv, map) {
 
 function ZoomControl(controlDiv, map, difference) {
     var controlUI = document.createElement('DIV');
-    $(controlUI).addClass("control-border")
+    $(controlUI).addClass("control-border");
     controlDiv.appendChild(controlUI);
 
     var controlText = document.createElement('DIV');
-    $(controlText).addClass("control-text")
+    $(controlText).addClass("control-text");
     if(difference > 0) {
         controlText.innerHTML = '+';
     } else {
@@ -82,12 +80,12 @@ function ZoomControl(controlDiv, map, difference) {
 
 function DoSearch(controlDiv, map) {
     var controlUI = document.createElement('DIV');
-    $(controlUI).addClass("control-border")
+    $(controlUI).addClass("control-border");
     controlDiv.appendChild(controlUI);
 
     // Set CSS for the control interior
     var controlText = document.createElement('DIV');
-    $(controlText).addClass("control-text")
+    $(controlText).addClass("control-text");
     controlText.innerHTML = 'Kempy';
     controlUI.appendChild(controlText);
 
@@ -330,7 +328,7 @@ function showPopup(text,id) {
         left:'50%',
         margin:'-'+(($('#window').height() / 2)+10 )+'px 0 0 -'+(($('#window').width() / 2)+10)+'px'
     });
-    $('#window-text-desc').text("Nahrávám bližší popis kempu...")
+    $('#window-text-desc').text("Nahrávám bližší popis kempu...");
     $('#window-text-desc').load('campdesc.php?id=' + id, function() {
         var textDiv = $('#window-text-desc');
         if(textDiv.html().length < 1) {
@@ -381,7 +379,7 @@ function doLoadCamps(map) {
 
     $.ajax({
         type: "GET",
-        url: "http://kempy.tomas-dvorak.cz/proxy.php?x="+coords.lat()+"&y="+coords.lng()+"&r="+Math.round(d)+"&format=xml&limit=100",
+        url: "proxy.php?x="+coords.lat()+"&y="+coords.lng()+"&r="+Math.round(d)+"&format=xml&limit=100",
         dataType: "xml",
         success: function(xml) {
             if (markersArray) {
@@ -393,8 +391,8 @@ function doLoadCamps(map) {
             var counter = 0
             $(xml).find('kemp').each(function(){
 
-                var lat = $(this).find('gps_lat').text()
-                var lng = $(this).find('gps_lng').text()
+                var lat = $(this).find('gps_lat').text();
+                var lng = $(this).find('gps_lng').text();
 
 
 

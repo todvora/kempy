@@ -3,9 +3,15 @@
 include("GeoIP.php");
 $gi = new Net_GeoIP(dirname(__FILE__) . '/GeoLiteCity.dat');
 $ip = $_SERVER['REMOTE_ADDR'];
-$data = $gi->lookupLocation($ip)->getData();
-$lat = $data['latitude'];
-$long = $data['longitude'];
+$location = $gi->lookupLocation($ip);
+if($location != null) {
+    $data = $gi->getData();
+    $lat = $data['latitude'];
+    $long = $data['longitude'];
+} else {
+    $lat = "";
+    $long = "";
+}
 
 ?>
 <!DOCTYPE html>
@@ -26,10 +32,6 @@ $long = $data['longitude'];
         
         <script type="text/javascript" src="main.js"></script>
         <link type="text/css" rel="stylesheet" href="style.css"/>
-        <!--
-        <script type="text/javascript" src="main.compressed.js"></script>
-        <link type="text/css" rel="stylesheet" href="style.compressed.css"/>
-        -->
     </head>
     <body>
         <div id="map_canvas" style="width:100%; height:100%"></div>
